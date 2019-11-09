@@ -10,6 +10,8 @@ namespace OtterGameSetup
         public Dictionary<string, Scene> GameScenes { get; private set; }
         public PickupItemSpawnManager SpawnManager { get; private set; }
 
+        public int Score { get; private set; }
+
         public UIManager UImanager { get; private set; }
 
         public GameManager InitializeGame(int sizeX = 800, int sizeY = 600)
@@ -25,5 +27,17 @@ namespace OtterGameSetup
 
             return this;
         }
+
+        public void AddScore(int value)
+        {
+            Score += value;
+            UImanager.ChangeScoreText(Score.ToString());
+        }
+    }
+
+    public enum Tag
+    {
+        Player,
+        PickupItem,
     }
 }

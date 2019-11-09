@@ -5,14 +5,25 @@ namespace OtterGameSetup.Entities
     public class Player : Entity
     {
         public int MoveSpeed { get; private set; } = 5;
+        public Vector2 PlayerSize { get; private set; } = new Vector2(25, 25);
 
-        //Base Player, Letting x & y empty will make the player spaw at the center of screen
+        private BoxCollider playerCollider { get; set; }
+
+        //Base Player, Instancing with x & y empty will make the player spaw at the center of screen
         public Player(Game currentGame, float posX = 0, float posY = 0, Graphic graphic = null, Collider collider = null, string name = "")
             : base(posX, posY, graphic, collider, name)
         {
+            var pX = (int)PlayerSize.X;
+            var pY = (int)PlayerSize.Y;
+
             X = posX == 0 ? currentGame.HalfWidth : 0;
             Y = posY == 0 ? currentGame.HalfHeight : 0;
-            Graphic = graphic ?? Image.CreateRectangle(25, Color.Blue);
+
+            Collider = new BoxCollider(pX, pY, Tag.Player);
+            Graphic = graphic ?? Image.CreateRectangle(pX, pY, Color.Blue);
+
+            Graphic.CenterOrigin();
+            Collider.CenterOrigin();
         }
 
         public override void Update()
@@ -26,9 +37,15 @@ namespace OtterGameSetup.Entities
             if (Input.KeyDown(Key.A) && !Input.KeyDown(Key.D))
                 X -= MoveSpeed;
 
-            //TODO: call pickupitem ChangePosition on collision, and AddScore
-
             base.Update();
+        }
+
+        public override void Render()
+        {
+            // Uncomment the following line to see the collider.
+            Collider.Render();
+
+            base.Render();
         }
     }
 }

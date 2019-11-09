@@ -3,26 +3,30 @@ using OtterGameSetup.Entities;
 
 namespace OtterGameSetup
 {
-    internal class Program
+    public class Program
     {
+        static public GameManager Manager { get; private set; }
+
         private static void Main(string[] args)
         {
-            var game = new GameManager().InitializeGame();
-            var player = new Player(game.MainGame, name: "Collector");
+            //TODO: Put all logic below into a separate class
+
+            Manager = new GameManager().InitializeGame();
+            var player = new Player(Manager.MainGame, name: "Collector");
 
             //Game Handlers
-            game.GameScenes.TryGetValue("Game", out Scene scene);
+            Manager.GameScenes.TryGetValue("Game", out Scene scene);
 
             //Scene Entities
             scene.Add(player);
-            foreach (var pickupItem in game.SpawnManager.PickupItems)
+            foreach (var pickupItem in Manager.SpawnManager.PickupItems)
                 scene.Add(pickupItem);
 
             //Scene Graphics
-            scene.AddGraphic(game.UImanager.GameScore);
+            scene.AddGraphic(Manager.UImanager.GameScore);
 
             //Game Start
-            game.MainGame.Start(scene);
+            Manager.MainGame.Start(scene);
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using Otter;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OtterGameSetup.Managers
 {
@@ -11,7 +7,7 @@ namespace OtterGameSetup.Managers
     {
         public List<Text> DebugTexts { get; private set; }
         public RichText GameScore { get; private set; }
-        
+
         public UIManager(Game currentGame)
         {
             GameScore = ScoreSetup(currentGame, "Score: 0");
@@ -33,6 +29,11 @@ namespace OtterGameSetup.Managers
                 Y = 10,
                 TextAlign = TextAlign.Center,
             };
+        }
+
+        public void ChangeScoreText(string score)
+        {
+            GameScore.String = $"Score: {score}";
         }
     }
 }
