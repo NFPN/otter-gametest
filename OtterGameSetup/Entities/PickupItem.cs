@@ -20,6 +20,8 @@ namespace OtterGameSetup.Entities
         {
             if (Collider.Overlap(X, Y, Tag.Player)) // TODO: This should be at Player for better performance
             {
+                RemoveSelf();
+
                 if (Program.Manager != null)
                     Program.Manager.AddScore(10);
             }
