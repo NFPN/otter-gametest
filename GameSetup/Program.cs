@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Otter;
+using System;
+
 
 namespace GameSetup
 {
@@ -6,7 +8,11 @@ namespace GameSetup
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var game = new Game("The Collector", 800, 600);
+
+
+            game.Start();
+            //Console.ReadKey();
         }
     }
 }
