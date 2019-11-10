@@ -25,7 +25,6 @@ namespace OtterGameSetup.Managers
                 PickupItems.Add(new PickupItem().ChangePosition(CurrentGame));
         }
 
-        //TODO: change specific item position after collision
         public void CollidedWith(PickupItem item) => item.ChangePosition(CurrentGame);
     }
 }

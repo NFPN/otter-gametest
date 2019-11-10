@@ -1,4 +1,5 @@
 ﻿using Otter;
+using OtterGameSetup.Extensions;
 
 namespace OtterGameSetup.Entities
 {
