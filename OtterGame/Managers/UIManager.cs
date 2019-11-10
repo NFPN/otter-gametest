@@ -1,7 +1,7 @@
 ﻿using Otter;
 using System.Collections.Generic;
 
-namespace OtterGameSetup.Managers
+namespace OtterGame.Managers
 {
     public class UIManager
     {

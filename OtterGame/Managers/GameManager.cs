@@ -1,19 +1,19 @@
 ﻿using Otter;
-using OtterGameSetup.Entities;
-using OtterGameSetup.Managers;
-using OtterGameSetup.Utils;
+using OtterGame.Entities;
+using OtterGame.Managers;
+using OtterGame.Utils;
 using System.Collections.Generic;
 
-namespace OtterGameSetup
+namespace OtterGame
 {
     public class GameManager
     {
-        public Dictionary<string, Scene> GameScenes { get; private set; }
-        public PickupItemSpawnManager SpawnManager { get; private set; }
-        public UIManager UImanager { get; private set; }
-
-        private Game MainGame { get; set; }
         private int Score { get; set; }
+        private Game MainGame { get; set; }
+
+        public UIManager UImanager { get; private set; }
+        public PickupItemSpawnManager SpawnManager { get; private set; }
+        public Dictionary<string, Scene> GameScenes { get; private set; }
 
         public GameManager()
         {
@@ -22,7 +22,7 @@ namespace OtterGameSetup
             SpawnManager = new PickupItemSpawnManager(MainGame);
             GameScenes = new Dictionary<string, Scene>()
             {
-                { "Game",new CustomScene() },
+                { "Game",new CustomScene("BGM.wav") },
             };
 
             foreach (var sceneItem in GameScenes)

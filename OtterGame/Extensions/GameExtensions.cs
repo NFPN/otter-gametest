@@ -1,15 +1,15 @@
 ﻿using Otter;
-using OtterGameSetup.Entities;
+using OtterGame.Entities;
 
-namespace OtterGameSetup.Extensions
+namespace OtterGame.Extensions
 {
     internal static class GameExtensions
     {
-        public static PickupItem ChangePosition(this PickupItem item, Game currentGame)
+        public static PickupItem ChangePosition(this PickupItem item)
         {
             var randPosition = Rand.IntXY(
-                item.Graphic.Width, currentGame.Width - (item.Graphic.Width / 2),
-                item.Graphic.Height, currentGame.Height - (item.Graphic.Height / 2));
+                item.Graphic.Width, Global.WINDOWWIDTH - (item.Graphic.Width / 2),
+                item.Graphic.Height, Global.WINDOWHEIGHT - (item.Graphic.Height / 2));
 
             item.SetPosition(randPosition.X, randPosition.Y);
             return item;

@@ -1,4 +1,4 @@
-﻿namespace OtterGameSetup
+﻿namespace OtterGame
 {
     public static class Global
     {

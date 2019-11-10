@@ -1,7 +1,7 @@
 ﻿using Otter;
-using OtterGameSetup.Extensions;
+using OtterGame.Extensions;
 
-namespace OtterGameSetup.Entities
+namespace OtterGame.Entities
 {
     public class PickupItem : Entity
     {
@@ -15,28 +15,6 @@ namespace OtterGameSetup.Entities
 
             Graphic.CenterOrigin();
             Collider.CenterOrigin();
-        }
-
-        public override void Update()
-        {
-            if (Collider.Overlap(X, Y, Tag.Player)) // TODO: This should be at Player for better performance
-            {
-                if (Program.Manager != null)
-                {
-                    Program.Manager.AddScore(10);
-                    Program.Manager.SpawnManager.CollidedWith(this);
-                }
-            }
-
-            base.Update();
-        }
-
-        public override void Render()
-        {
-            // Uncomment the following line to see the collider.
-            Collider.Render();
-
-            base.Render();
         }
     }
 }
