@@ -20,5 +20,6 @@ namespace OtterGame.Extensions
     {
         Player,
         PickupItem,
+        Enemy,
     }
 }
