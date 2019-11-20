@@ -1,6 +1,8 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
+using OtterGame.Entities;
 using OtterGameSetup.Data;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace OtterGameSetup.Services
@@ -14,13 +16,22 @@ namespace OtterGameSetup.Services
             FbaseClient = new FirebaseClient("https://senacbaset5.firebaseio.com/");
         }
 
-        public async Task GET()
+        public async Task<ScoreData> GET()
         {
-            var table = await FbaseClient
+            var register = await FbaseClient
                 .Child("Score")
                 .OrderByKey()
                 .StartAt("search")
-                .OnceAsync<Score>();
+                .OnceAsync<ScoreData>();
+
+            return (register as ScoreData);
+        }
+
+        public async Task Post(Player player, ScoreData score)
+        {
+            var register = await FbaseClient
+                .Child("Placar")
+                .PostAsync();
         }
     }
 }

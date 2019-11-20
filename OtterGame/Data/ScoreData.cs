@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OtterGameSetup.Data
 {
-    public class Score
+    public class ScoreData
     {
         public int Player { get; set; }
         public int PlayerScore { get; set; }
